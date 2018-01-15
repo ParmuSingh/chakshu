@@ -22,12 +22,13 @@ grammer2 = '''
 SPACE: " "*
 				STRING: [STRING]| WORD
 '''
-grammer_print = '''
-				start: "print " STRING
-				STRING: /[A-Z a-z 0-9 //w]*/
-				%import common.WORD
-				SPACE: " "*
-				'''		
+grammar_print = '''
+			start: "print" SPACE STRING
+			STRING: QUOTES /[A-Z a-z 0-9 //w]*/ QUOTES
+			QUOTES: "\'"
+			%import common.WORD
+			SPACE: " "*
+'''		
 			
 parser = l(grammer_print)
 
